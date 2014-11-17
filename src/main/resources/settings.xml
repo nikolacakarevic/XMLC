@@ -1,0 +1,13 @@
+<?xml version="1.0" ?>
+<configuration>
+    <sources>
+        <source source-name="Source1" file-name="File1" enabled="true" visible="true" >
+            <file-url>C:\tmp\</file-url>
+            <approved>false</approved>
+            <owner>
+                <name>Nikola</name>
+                <last-name>Cakarevic</last-name>
+            </owner>
+        </source>
+    </sources>
+</configuration>
