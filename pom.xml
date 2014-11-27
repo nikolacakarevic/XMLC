@@ -14,7 +14,7 @@
         <maven.compiler.source>1.7</maven.compiler.source>
         <maven.compiler.plugin>3.0</maven.compiler.plugin>
         <jstl.version>1.2</jstl.version>
-        <primefaces.version>4.0</primefaces.version>
+        <primefaces.version>5.0</primefaces.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 

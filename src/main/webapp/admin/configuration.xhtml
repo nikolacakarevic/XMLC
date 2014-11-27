@@ -3,9 +3,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
 
-    <ui:composition>
+    <ui:composition template="/WEB-INF/templates/template.xhtml">
 
         <ui:define name="metadata">
             <f:metadata>
@@ -15,6 +16,60 @@
 
         <ui:define name="content">
 
+            <h:form>
+
+                <p:commandLink value="#{msg['command.link.add']}" action="#{configurationController.writeToXml}" update="sources_table" />
+
+                <p:dataTable id="sources_table" value="#{configurationController.configuration.source}" var="source" >
+                    <p:column>
+                        <f:facet name="header">
+                            #{msg['label.configuration.source-name']}
+                        </f:facet>
+                        <h:outputText value="#{source.sourceName}" />
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">
+                            #{msg['label.configuration.file-name']}
+                        </f:facet>
+                        <h:outputText value="#{source.fileName}" />
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">
+                            #{msg['label.configuration.enabled']}
+                        </f:facet>
+                        <h:outputText value="#{source.isEnabled()}" />
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">
+                            #{msg['label.configuration.visible']}
+                        </f:facet>
+                        <h:outputText value="#{source.isVisible()}" />
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">
+                            #{msg['label.configuration.actions']}
+                        </f:facet>
+                        <p:commandLink value="#{msg['command.link.edit']}" action="#{configurationController.selectSource(source)}" update=":#{p:component('sources_data_panel')}" />
+                    </p:column>
+                </p:dataTable>
+
+                <p:outputPanel id="sources_data_panel" styleClass="small-top-padding">
+                    <p:panelGrid columns="2" rendered="#{configurationController.selectedSource != null}">
+
+                        <h:outputText value="#{msg['label.configuration.file']}" />
+                        <p:outputLabel value="#{configurationController.selectedSource.fileUrl}" />
+
+                        <h:outputText value="#{msg['label.configuration.approved']}" />
+                        <h:outputText value="#{configurationController.selectedSource.isApproved()}" />
+
+                    </p:panelGrid>
+                </p:outputPanel>
+
+            </h:form>
         </ui:define>
 
     </ui:composition>

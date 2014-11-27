@@ -1,14 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
 
-<h:head>
-    <title>JSF 2.0 Hello World</title>
-</h:head>
-<h:body bgcolor="white">
-    <h3>JSF 2.0 Hello World Example - index.xhtml</h3>
-    <h4>Welcome1</h4>
-</h:body>
+<ui:composition template="/WEB-INF/templates/template.xhtml">
+
+    <ui:define name="metadata">
+        <f:metadata>
+            <f:event type="preRenderView" listener="#{configurationController.preRenderView}"/>
+        </f:metadata>
+    </ui:define>
+
+    <ui:define name="content">
+
+        <p:outputLabel value="#{msg['welcome.message']}" />
+
+    </ui:define>
+
+</ui:composition>
 </html>

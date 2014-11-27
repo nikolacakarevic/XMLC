@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+    <title><h:outputText value="#{msg['application.title']}"/></title>
+</h:head>
+
+<h:body>
+
+    <h:outputStylesheet library="css" name="main.css"/>
+
+    <div id="page">
+
+        <div id="header">
+            <ui:insert name="header" >
+                <ui:include src="header.xhtml" />
+            </ui:insert>
+        </div>
+
+        <div id="content-wrapper">
+            <div id="menu">
+                <ui:include src="menu.xhtml" />
+            </div>
+
+            <div id="content">
+                <div id="content-inside">
+
+                    <h:messages id="global-messages" styleClass="globalMessages" globalOnly="true" infoClass="info" errorClass="error" />
+
+                    <div class="medium-top-padding">
+                        <ui:insert name="content" >
+
+                        </ui:insert>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="footer">
+            <ui:insert name="footer" >
+                <ui:include src="footer.xhtml" />
+            </ui:insert>
+        </div>
+
+    </div>
+
+</h:body>
+
+</html>
