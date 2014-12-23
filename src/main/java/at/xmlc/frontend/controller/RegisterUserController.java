@@ -39,7 +39,7 @@ public class RegisterUserController extends AbstractConversationController {
         List<Role> roles = new ArrayList<>();
 
         user.setRoles(roles);
-        user.getRoles().add(Role.ADMIN);
+        user.getRoles().add(Role.MANAGER);
 
         try {
             user.setPassword(new Sha256Hash(user.getPassword()).toHex());

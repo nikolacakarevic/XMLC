@@ -33,6 +33,10 @@
             <h:panelGroup rendered="#{not request.isUserInRole('ADMIN')}">
                 You're not an ADMIN user. You probably will never become one.
             </h:panelGroup>
+
+            <h:form>
+                <h:commandButton value="logout" action="#{logoutController.submit}" />
+            </h:form>
         </h:panelGroup>
 
     </ui:define>
