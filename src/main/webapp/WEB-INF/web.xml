@@ -32,4 +32,35 @@
         <url-pattern>*.xhtml</url-pattern>
     </servlet-mapping>
 
+    <!-- Authentication and Authorisation -->
+    <listener>
+        <listener-class>org.apache.shiro.web.env.EnvironmentLoaderListener</listener-class>
+    </listener>
+
+    <filter>
+        <filter-name>shiroFilter</filter-name>
+        <filter-class>org.apache.shiro.web.servlet.ShiroFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>shiroFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+        <dispatcher>INCLUDE</dispatcher>
+        <dispatcher>ERROR</dispatcher>
+    </filter-mapping>
+
+
+    <data-source>
+        <name>java:XMLC/mysql/xmlc</name>
+        <class-name>com.mysql.jdbc.jdbc2.optional.MysqlDataSource</class-name>
+        <url>jdbc:mysql://localhost:3306/xmlc</url>
+        <user>root</user>
+        <password>root</password>
+        <transactional>false</transactional> <!-- https://community.jboss.org/message/730085 -->
+        <max-pool-size>10</max-pool-size>
+        <min-pool-size>5</min-pool-size>
+        <max-statements>0</max-statements>
+    </data-source>
+
 </web-app>

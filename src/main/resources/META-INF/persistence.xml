@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+             version="2.0">
+
+    <persistence-unit name="XMLC" transaction-type="JTA">
+        <description>ProjectDb persistence Unit</description>
+        <jta-data-source>java:jboss/datasources/XMLC_mysql</jta-data-source>
+
+        <class>at.xmlc.model.xml.authentication.User</class>
+
+        <properties>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
+            <property name="hibernate.hbm2ddl.auto" value="create-drop" />
+            <property name="hibernate.show_sql" value="true" />
+        </properties>
+    </persistence-unit>
+
+
+</persistence>

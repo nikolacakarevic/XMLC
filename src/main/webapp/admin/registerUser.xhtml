@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:o="http://omnifaces.org/ui">
+
+<ui:composition template="/WEB-INF/templates/template.xhtml">
+
+    <ui:define name="metadata">
+        <f:metadata>
+            <f:event type="preRenderView" listener="#{registerUserController.preRenderView}"/>
+        </f:metadata>
+    </ui:define>
+
+    <ui:define name="content">
+
+        <p:outputLabel value="#{msg['welcome.message']}" />
+
+        <o:importConstants type="at.xmlc.model.xml.authentication.Role" />
+
+        <h2>Register</h2>
+        <h:form id="register">
+            <h:panelGrid columns="3">
+                <h:outputLabel for="username" value="Username:" />
+                <h:inputText id="username" value="#{registerUserController.user.username}" required="true">
+                    <f:ajax event="blur" render="m_username" />
+                </h:inputText>
+                <h:message id="m_username" for="username" />
+
+                <h:outputLabel for="password" value="Password:" />
+                <h:inputSecret id="password" value="#{registerUserController.user.password}" required="true">
+                    <f:ajax event="blur" render="m_password" />
+                </h:inputSecret>
+                <h:message id="m_password" for="password" />
+
+
+
+                <h:panelGroup />
+                <h:commandButton value="Register" action="#{registerUserController.submit}" >
+                    <f:ajax execute="@form" render="@form" />
+                </h:commandButton>
+                <h:messages globalOnly="true" layout="table" />
+            </h:panelGrid>
+        </h:form>
+
+    </ui:define>
+
+</ui:composition>
+</html>
